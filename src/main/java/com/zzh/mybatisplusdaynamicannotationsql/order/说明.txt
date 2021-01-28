@@ -1,0 +1,15 @@
+数字越小优先级越高
+
+equalsIgnoreCase()和equals()的区别
+
+String a="ABC";
+a.equals("abc")为false,
+a.equalsIgnoreCase("abc")为true;
+equalsIgnoreCase与equals区别是前者不区分大小写，而后者区分
+
+
+filter不dofitler会怎么样
+
+
+
+
