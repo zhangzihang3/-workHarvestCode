@@ -32,6 +32,6 @@ public class autoFillConfig implements MetaObjectHandler {
     @Override
     public void updateFill(MetaObject metaObject) {
         log.info("更新时自动填充");
-        this.setFieldValByName("stock", -9090, metaObject);
+        this.setFieldValByName("stock", 10000, metaObject);
     }
 }

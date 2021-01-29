@@ -32,6 +32,7 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
         Goods byId = goodsService.getById(1);
         System.out.println(byId);
     }
+
     @Test
     void testInitializingBean() {
         goodsService.testInitializingBean();
@@ -62,13 +63,15 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
     @Test
     void testAutoFill() {
         Goods goods = new Goods();
-        goods.setId(30).setName("zzh").setPrice(100D).setRemark("张子行5").setGoodsTypeId(666).setStock(10);
+        goods.setId(30).setName("zzh").setPrice(100D).setRemark("张子行5").setGoodsTypeId(666).setStock(11);
 //        goodsService.save(goods);
         UpdateWrapper<Goods> goodsUpdateWrapper = new UpdateWrapper<>();
-        goodsUpdateWrapper.eq("id", 30).set("name", "张子行666");
-//        goodsService.update(null, goodsUpdateWrapper);
-        goodsService.update(goods, goodsUpdateWrapper);
-//        goodsService.update(goodsUpdateWrapper);
+        goodsUpdateWrapper.eq("id", 30);
+        //只更新需要更新的字段其他字段不会动
+        //goodsService.update(null, goodsUpdateWrapper);
+        //goodsService.update(goods, goodsUpdateWrapper);
+        goodsService.updateById(goods);
+       //goodsService.update(goodsUpdateWrapper);
 
     }
 
