@@ -1,12 +1,9 @@
 package com.zzh.mybatisplusdaynamicannotationsql;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.zzh.mybatisplusdaynamicannotationsql.config.paramsConfig;
 import com.zzh.mybatisplusdaynamicannotationsql.entity.Goods;
 import com.zzh.mybatisplusdaynamicannotationsql.mapper.GoodsMapper;
-import com.zzh.mybatisplusdaynamicannotationsql.service.GoodsService;
 import com.zzh.mybatisplusdaynamicannotationsql.service.impl.GoodsServiceImpl;
-import com.zzh.mybatisplusdaynamicannotationsql.utils.webUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +25,7 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
     com.zzh.mybatisplusdaynamicannotationsql.config.paramsConfig paramsConfig;
 
     @Test
-    void test() {
+    void testJsonSerialize() {
         Goods byId = goodsService.getById(1);
         System.out.println(byId);
     }
@@ -71,7 +68,7 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
         //goodsService.update(null, goodsUpdateWrapper);
         //goodsService.update(goods, goodsUpdateWrapper);
         goodsService.updateById(goods);
-       //goodsService.update(goodsUpdateWrapper);
+        //goodsService.update(goodsUpdateWrapper);
 
     }
 
