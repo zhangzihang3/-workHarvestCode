@@ -1,6 +1,7 @@
 package com.zzh.mybatisplusdaynamicannotationsql;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zzh.mybatisplusdaynamicannotationsql.config.ymlConfigurationProperties;
 import com.zzh.mybatisplusdaynamicannotationsql.entity.Goods;
 import com.zzh.mybatisplusdaynamicannotationsql.mapper.GoodsMapper;
 import com.zzh.mybatisplusdaynamicannotationsql.service.impl.GoodsServiceImpl;
@@ -23,11 +24,12 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
     GoodsMapper goodsMapper;
     @Autowired
     com.zzh.mybatisplusdaynamicannotationsql.config.paramsConfig paramsConfig;
+    @Autowired
+    com.zzh.mybatisplusdaynamicannotationsql.config.ymlConfigurationProperties ymlConfigurationProperties;
 
     @Test
     void testJsonSerialize() {
-        Goods byId = goodsService.getById(1);
-        System.out.println(byId);
+        System.out.println(ymlConfigurationProperties.getDataSize().toMegabytes());
     }
 
     @Test

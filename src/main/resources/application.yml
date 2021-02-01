@@ -1,5 +1,15 @@
 server:
   port: ${SERVER_PORT:8888}
+a:
+  name: zzh
+  price: 100
+  enable: true
+  unkonwn: unKonwn
+  duration: 2h
+  dataSize: 5MB
+  list:
+    - 1
+    - 2
 Good:
   name: zzh
   price: 100
