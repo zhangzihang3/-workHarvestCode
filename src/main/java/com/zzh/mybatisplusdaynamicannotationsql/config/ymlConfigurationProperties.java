@@ -2,6 +2,7 @@ package com.zzh.mybatisplusdaynamicannotationsql.config;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.unit.DataSize;
 import org.springframework.util.unit.DataUnit;
 
+import javax.sql.DataSource;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -61,6 +63,15 @@ public class ymlConfigurationProperties {
     @Bean
     @ConditionalOnMissingBean(testBean.class)
     public void onMissTestBean() {
-        System.out.println("ConditionalOnMissingBean注解生效：");
+        System.out.println("ConditionalOnMissingBean注解生效");
+    }
+
+    /**
+     * ioc容器中有bean（testBean），onTestBean才会生效
+     */
+    @Bean
+    @ConditionalOnBean(testBean.class)
+    public void onTestBean(){
+        System.out.println("ConditionalOnBean注解生效");
     }
 }
