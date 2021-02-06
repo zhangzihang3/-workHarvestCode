@@ -11,6 +11,7 @@ import org.springframework.util.unit.DataUnit;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 张子行
@@ -29,8 +30,20 @@ public class ymlConfigurationProperties {
      */
     private Boolean enable = false;
     private String unkonwn = null;
+    /**
+     * 绑定list类型
+     */
     private List<String> list = null;
+    /**
+     * 绑定Duration类型
+     */
     private Duration duration = Duration.ofSeconds(1);
-
+    /**
+     * 绑定DataSize类型
+     */
     private DataSize dataSize = DataSize.ofMegabytes(1);
+    /**
+     * 绑定map类型
+     */
+    Map<String, String> map;
 }

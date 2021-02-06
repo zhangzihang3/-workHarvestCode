@@ -10,6 +10,9 @@ a:
   list:
     - 1
     - 2
+  map:
+    mKey1: 'mValue1'
+    mKey2: 'mValue2'
 Good:
   name: zzh
   price: 100
@@ -17,7 +20,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/xiaomi?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: 128215
+    password: 243167ooOL
     username: root
     initialSize: 5
     minIdle: 5
