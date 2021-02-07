@@ -1,9 +1,6 @@
 package com.zzh.mybatisplusdaynamicannotationsql.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 
 import java.io.Serializable;
 
@@ -18,7 +15,7 @@ import lombok.experimental.Accessors;
  *
  * </p>
  *
- * @author testjava
+ * @author zzh
  * @since 2021-01-26
  */
 @Data
@@ -47,6 +44,10 @@ public class Goods implements Serializable {
 
     @ApiModelProperty(value = "商品描述")
     private String remark;
-
-
+    /**
+     * @Version mybatisPlus乐观锁自动配置
+     */
+    @ApiModelProperty(value = "版本号")
+    @Version
+    private Integer version;
 }

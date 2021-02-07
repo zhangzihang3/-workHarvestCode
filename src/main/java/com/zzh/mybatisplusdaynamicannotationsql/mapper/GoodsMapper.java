@@ -15,8 +15,13 @@ import java.util.List;
 public interface GoodsMapper extends BaseMapper<Goods> {
     @Select("<script>"
             + "select * from goods where id between"
-            + "<if test='#{idMin}!=null'>" + "#{idMin} and "+"</if>"
+            + "<if test='#{idMin}!=null'>" + "#{idMin} and " + "</if>"
             + "<if test='#{idMax}!=null'>" + "#{idMax}" + "</if>"
             + "</script>")
     public List<Goods> select(@Param("idMin") Integer idMin, @Param("idMax") Integer idMax);
+
+    public void upMoney();
+
+    public void downMoney();
+
 }

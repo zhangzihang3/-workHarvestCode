@@ -2,6 +2,7 @@ package com.zzh.mybatisplusdaynamicannotationsql.diyJsonData;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +22,10 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 public class money {
-
+    /**
+     * 只能被序列化，序列化的key为macAmount
+     */
+    @JsonProperty(value = "macAmount", access = JsonProperty.Access.READ_ONLY)
     private int amount;
     /**
      * 使用自定义的序列化规则

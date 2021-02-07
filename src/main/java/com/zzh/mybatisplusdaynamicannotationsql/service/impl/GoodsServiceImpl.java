@@ -7,7 +7,9 @@ import com.zzh.mybatisplusdaynamicannotationsql.service.GoodsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zzh.mybatisplusdaynamicannotationsql.utils.webUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -20,6 +22,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements GoodsService {
+    @Autowired
+    GoodsMapper goodsMapper;
+
     public void testWebUtil() {
         log.error("设备类型: " + webUtil.getDeviceType());
         log.error("获取GoodsServiceImpl bean: " + webUtil.getBean(GoodsServiceImpl.class));
@@ -30,5 +35,12 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     public void testInitializingBean() {
         log.error("goodName: " + testBean.GOODNAME);
         log.error("goodPrice: " + testBean.GOODPRICE);
+    }
+
+    @Transactional
+    public void tranferMoney() {
+        goodsMapper.upMoney();
+        int error = 1/0;
+        goodsMapper.downMoney();
     }
 }

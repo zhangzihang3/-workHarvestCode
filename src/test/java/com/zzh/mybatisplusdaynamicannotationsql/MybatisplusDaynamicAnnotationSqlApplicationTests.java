@@ -1,6 +1,9 @@
 package com.zzh.mybatisplusdaynamicannotationsql;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zzh.mybatisplusdaynamicannotationsql.config.ymlConfigurationProperties;
 import com.zzh.mybatisplusdaynamicannotationsql.entity.Goods;
 import com.zzh.mybatisplusdaynamicannotationsql.mapper.GoodsMapper;
@@ -26,6 +29,25 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
     com.zzh.mybatisplusdaynamicannotationsql.config.paramsConfig paramsConfig;
     @Autowired
     com.zzh.mybatisplusdaynamicannotationsql.config.ymlConfigurationProperties ymlConfigurationProperties;
+    @Test
+    void testTransactional() {
+      goodsService.tranferMoney();
+    }
+
+    @Test
+    void testPage() {
+        Wrapper<Goods> queryWrapper=new LambdaQueryWrapper<Goods>()
+                .eq(Goods::getName,"zzh");
+        Page<Goods> goodsPage = new Page<>(1,10);
+        System.out.println(goodsService.page(goodsPage, queryWrapper).getRecords());
+    }
+    @Test
+    void testOptimisticLocker() {
+        Goods byId = goodsService.getById(30);
+        byId.setPrice(8989D);
+        byId.setStock(9090);
+        goodsService.updateById(byId);
+    }
 
     @Test
     void testJsonSerialize() {

@@ -23,7 +23,7 @@ public class GoodsController {
     }
 
     @GetMapping("/testDivException")
-    public DivException b() {
+    public DivException testDivException() {
         DivException divException = new DivException(new ErrorMsg(100, "error"), LocalDateTime.now());
         return divException;
     }
