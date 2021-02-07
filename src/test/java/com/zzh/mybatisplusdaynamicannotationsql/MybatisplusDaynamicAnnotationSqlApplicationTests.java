@@ -51,7 +51,7 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
 
     @Test
     void testJsonSerialize() {
-        System.out.println(ymlConfigurationProperties.getDataSize().toMegabytes());
+        System.out.println(ymlConfigurationProperties.getMap().toString());
     }
 
     @Test

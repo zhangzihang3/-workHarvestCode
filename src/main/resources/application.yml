@@ -1,5 +1,6 @@
 server:
   port: ${SERVER_PORT:8888}
+enAble: enAble
 a:
   name: zzh
   price: 100
@@ -10,6 +11,9 @@ a:
   list:
     - 1
     - 2
+  map:
+    mKey1: mValue1
+    mKey2: mValue2
 Good:
   name: zzh
   price: 100
