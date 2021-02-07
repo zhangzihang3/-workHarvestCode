@@ -40,7 +40,7 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     @Transactional
     public void tranferMoney() {
         goodsMapper.upMoney();
-        int error = 1/0;
+        //int error = 1/0;
         goodsMapper.downMoney();
     }
 }

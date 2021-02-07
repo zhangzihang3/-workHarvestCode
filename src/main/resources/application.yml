@@ -42,6 +42,11 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis-plus:
   mapper-locations: classpath:xml/*.xml
+#  全局配置逻辑删除字段
+#  global-config:
+#    db-config:
+#      logic-not-delete-value: 0
+#      logic-delete-value: 1
   #打印sql语句
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -35,6 +35,7 @@ public class Goods implements Serializable {
 
     @ApiModelProperty(value = "商品单价")
     private Double price;
+
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "商品库存")
     private Integer stock;
@@ -50,4 +51,11 @@ public class Goods implements Serializable {
     @ApiModelProperty(value = "版本号")
     @Version
     private Integer version;
+
+    /**
+     * @TableLogic 逻辑删除字段,删除：1，未删除：0
+     */
+    @ApiModelProperty(value = "逻辑删除")
+    @TableLogic(value = "0", delval = "1")
+    private Integer deleted;
 }

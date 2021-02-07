@@ -29,11 +29,26 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
     com.zzh.mybatisplusdaynamicannotationsql.config.paramsConfig paramsConfig;
     @Autowired
     com.zzh.mybatisplusdaynamicannotationsql.config.ymlConfigurationProperties ymlConfigurationProperties;
+
+    /**
+     * 逻辑删除
+     */
+    @Test
+    void testLogicDeleted() {
+       goodsService.removeById(31);
+    }
+
+    /**
+     * 事务
+     */
     @Test
     void testTransactional() {
       goodsService.tranferMoney();
     }
 
+    /**
+     * 分页
+     */
     @Test
     void testPage() {
         Wrapper<Goods> queryWrapper=new LambdaQueryWrapper<Goods>()
@@ -41,6 +56,10 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
         Page<Goods> goodsPage = new Page<>(1,10);
         System.out.println(goodsService.page(goodsPage, queryWrapper).getRecords());
     }
+
+    /**
+     * 乐观锁
+     */
     @Test
     void testOptimisticLocker() {
         Goods byId = goodsService.getById(30);
@@ -49,16 +68,25 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
         goodsService.updateById(byId);
     }
 
+    /**
+     * 序列化
+     */
     @Test
     void testJsonSerialize() {
         System.out.println(ymlConfigurationProperties.getMap().toString());
     }
 
+    /**
+     * testInitializingBean
+     */
     @Test
     void testInitializingBean() {
         goodsService.testInitializingBean();
     }
 
+    /**
+     * 动态sql
+     */
     @Test
     void testDaynamicAnnotationSql() {
         List<Goods> select = goodsMapper.select(12, 20);
@@ -81,6 +109,9 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
         System.out.println(LocalDateTime.now());
     }
 
+    /**
+     * 自动填充
+     */
     @Test
     void testAutoFill() {
         Goods goods = new Goods();
