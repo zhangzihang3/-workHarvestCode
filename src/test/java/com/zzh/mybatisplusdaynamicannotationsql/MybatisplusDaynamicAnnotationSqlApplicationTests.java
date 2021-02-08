@@ -2,6 +2,7 @@ package com.zzh.mybatisplusdaynamicannotationsql;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zzh.mybatisplusdaynamicannotationsql.config.ymlConfigurationProperties;
@@ -35,7 +36,9 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
      */
     @Test
     void testLogicDeleted() {
-       goodsService.removeById(31);
+        goodsService.remove(new QueryWrapper<Goods>().eq("stock", 10000));
+        goodsService.removeById(31);
+        goodsMapper.deleteById(30);
     }
 
     /**
@@ -43,7 +46,7 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
      */
     @Test
     void testTransactional() {
-      goodsService.tranferMoney();
+        goodsService.tranferMoney();
     }
 
     /**
@@ -51,9 +54,9 @@ class MybatisplusDaynamicAnnotationSqlApplicationTests {
      */
     @Test
     void testPage() {
-        Wrapper<Goods> queryWrapper=new LambdaQueryWrapper<Goods>()
-                .eq(Goods::getName,"zzh");
-        Page<Goods> goodsPage = new Page<>(1,10);
+        Wrapper<Goods> queryWrapper = new LambdaQueryWrapper<Goods>()
+                .eq(Goods::getName, "zzh");
+        Page<Goods> goodsPage = new Page<>(1, 10);
         System.out.println(goodsService.page(goodsPage, queryWrapper).getRecords());
     }
 
